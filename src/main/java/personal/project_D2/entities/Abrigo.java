@@ -1,6 +1,9 @@
 package personal.project_D2.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Abrigo {
@@ -17,7 +20,9 @@ public class Abrigo {
     private int capacidade;
     private int ocupacao;
 
-    // Getters and Setters
+    public Abrigo() {
+    }
+
     public Long getId() {
         return id;
     }
