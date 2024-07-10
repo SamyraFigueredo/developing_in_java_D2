@@ -2,26 +2,44 @@ package personal.project_D2.entities;
 
 import java.time.LocalDate;
 
-public class Doacao {
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
-	private int id;
-	private String tipo;
+@Entity
+@Table(name = "doacao")
+public class Doacao {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
 	private String descricao;
+	private String tipo;
+	private int quantidade;
 	private String genero;
 	private String tamanho;
-	private int quantidade;
-	private String unidadeMedida;
 	private LocalDate validade;
-	private int centroDistribuicaoId;
+
+	@Column(name = "unidade_medida")
+	private String unidadeMedida;
+
+	@ManyToOne
+	@JoinColumn(name = "centro_distribuicao_id", nullable = false)
+	private CentroDistribuicao centroDistribuicao;
 
 	public Doacao() {
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -81,11 +99,11 @@ public class Doacao {
 		this.validade = validade;
 	}
 
-	public int getCentroDistribuicaoId() {
-		return centroDistribuicaoId;
+	public CentroDistribuicao getCentroDistribuicao() {
+		return centroDistribuicao;
 	}
 
-	public void setCentroDistribuicaoId(int centroDistribuicaoId) {
-		this.centroDistribuicaoId = centroDistribuicaoId;
+	public void setCentroDistribuicao(CentroDistribuicao centroDistribuicao) {
+		this.centroDistribuicao = centroDistribuicao;
 	}
 }

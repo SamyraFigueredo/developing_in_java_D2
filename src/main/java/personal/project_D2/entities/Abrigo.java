@@ -1,89 +1,104 @@
 package personal.project_D2.entities;
 
+import java.util.List;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "abrigo")
 public class Abrigo {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private String nome;
-    private String endereco;
-    private String responsavel;
-    private String telefone;
-    private String email;
-    private int capacidade;
-    private int ocupacao;
+	private String nome;
+	private String endereco;
+	private String responsavel;
+	private String telefone;
+	private String email;
+	private int capacidade;
+	private int ocupacao;
 
-    public Abrigo() {
-    }
+	@OneToMany(mappedBy = "abrigo")
+	private List<Pedido> pedidos;
 
-    public Long getId() {
-        return id;
-    }
+	public Abrigo() {
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public String getEndereco() {
-        return endereco;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
+	public String getEndereco() {
+		return endereco;
+	}
 
-    public String getResponsavel() {
-        return responsavel;
-    }
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
 
-    public void setResponsavel(String responsavel) {
-        this.responsavel = responsavel;
-    }
+	public String getResponsavel() {
+		return responsavel;
+	}
 
-    public String getTelefone() {
-        return telefone;
-    }
+	public void setResponsavel(String responsavel) {
+		this.responsavel = responsavel;
+	}
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
+	public String getTelefone() {
+		return telefone;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public int getCapacidade() {
-        return capacidade;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setCapacidade(int capacidade) {
-        this.capacidade = capacidade;
-    }
+	public int getCapacidade() {
+		return capacidade;
+	}
 
-    public int getOcupacao() {
-        return ocupacao;
-    }
+	public void setCapacidade(int capacidade) {
+		this.capacidade = capacidade;
+	}
 
-    public void setOcupacao(int ocupacao) {
-        this.ocupacao = ocupacao;
-    }
+	public int getOcupacao() {
+		return ocupacao;
+	}
+
+	public void setOcupacao(int ocupacao) {
+		this.ocupacao = ocupacao;
+	}
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
 }
