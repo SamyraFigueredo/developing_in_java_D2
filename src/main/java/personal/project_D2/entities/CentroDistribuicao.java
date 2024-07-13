@@ -16,7 +16,7 @@ public class CentroDistribuicao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String nome;
 	private String endereco;
 	private String cidade;
@@ -34,6 +34,15 @@ public class CentroDistribuicao {
 
 	@OneToMany(mappedBy = "centroDistribuicao")
 	private List<Doacao> doacoes;
+
+	// Método para adicionar doação com verificação de capacidade
+	public void adicionarDoacao(Doacao doacao) {
+		if (doacoes.stream().mapToInt(Doacao::getQuantidade).sum() + doacao.getQuantidade() <= 1000) {
+			doacoes.add(doacao);
+		} else {
+			throw new RuntimeException("Limite de capacidade do centro de distribuição atingido");
+		}
+	}
 
 	public CentroDistribuicao() {
 	}
