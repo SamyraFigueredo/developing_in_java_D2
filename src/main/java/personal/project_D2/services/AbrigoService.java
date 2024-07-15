@@ -27,7 +27,6 @@ public class AbrigoService {
 	}
 
 	public void deletarAbrigo(Long id) {
-
 		abrigoRepository.deleteById(id);
 	}
 }
